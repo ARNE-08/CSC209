@@ -20,6 +20,9 @@ public class Restaurant {
         Food Coke = new Food(3, "Coca Cola", 20, 150, (short) 3);
         Food Pepsi = new Food(4, "Pepsi", 20, 150, (short) 3);
         Food Fanta = new Food(5, "Fanta", 20, 150, (short) 2);
+        Coke.setCategory("drink");
+        Pepsi.setCategory("drink");
+        Fanta.setCategory("drink");
 
         Menu menu = new Menu();
         menu.addNewFood(Padthai);
