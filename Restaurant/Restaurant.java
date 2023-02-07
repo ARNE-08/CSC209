@@ -25,12 +25,17 @@ public class Restaurant {
         Fanta.setCategory("drink");
 
         Menu menu = new Menu();
-        menu.addNewFood(Padthai);
-        menu.addNewFood(Tomyum);
-        menu.addNewFood(Coke);
-        menu.addNewFood(Pepsi);
-        menu.addNewFood(Fanta);
-        menu.showAllFood();
+        // menu.addNewFood(Padthai);
+        // menu.addNewFood(Tomyum);
+        // menu.addNewFood(Coke);
+        // menu.addNewFood(Pepsi);
+        // menu.addNewFood(Fanta);
+        // menu.showAllFood();
+
+        menu.readAllRecord();
+        boolean x = menu.searchByName("Pepsi");
+        System.out.println(x);
+        menu.showNamePrice((short) 4);
 
         // menu.removeFood(4); // remove Pepsi
         // menu.showAllFood();
