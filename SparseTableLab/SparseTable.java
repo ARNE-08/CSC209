@@ -7,7 +7,7 @@ public class SparseTable {
         classes = new RegisterNode[classAmount];
     }
 
-    public void addRegister(int stid, int cid) {
+    public RegisterNode addRegister(int stid, int cid) {
         if (!isRegister(stid, cid)) {
             RegisterNode newRegis = new RegisterNode(stid, cid);
             RegisterNode temp;
@@ -39,7 +39,15 @@ public class SparseTable {
                 newRegis.nextStudent = temp.nextStudent;
                 temp.nextStudent = newRegis;
             }
+            return newRegis;
         }
+        return null;
+    }
+
+    public RegisterNode addRegister(int stid, int cid, int grade) {
+        RegisterNode n = addRegister(stid, cid);
+        n.setGrade(grade);
+        return n;
     }
 
     public boolean isRegister(int stid, int cid) {
@@ -70,10 +78,57 @@ public class SparseTable {
     }
 
     // Homework
-    // public double calculateGPA(int stid) {
-    // double gpa = 0.00;
-    // double sum;
+    public double calculateGPA(int stid) {
+        double[] gradePoint = { 4.0, 3.7, 3.3, 3.0, 2.7, 2.3, 2.0, 1.7, 1.3, 1.0, 0 };
+        double sum = 0;
+        int classnum = 0;
+        for (RegisterNode temp = students[stid]; temp != null; temp = temp.nextClass) {
+            sum += gradePoint[temp.grade];
+            classnum++;
+        }
+        return sum / classnum;
+    }
 
+    // public double calculateGPADIY(int stid) {
+    // int classnum = 0;
+    // double sum = 0.00;
+    // for (RegisterNode temp = students[stid]; temp != null; temp = temp.nextClass)
+    // {
+    // classnum++;
+    // switch (temp.grade) {
+    // case 0:
+    // sum += 4.00;
+    // break;
+    // case 1:
+    // sum += 3.70;
+    // break;
+    // case 2:
+    // sum += 3.30;
+    // break;
+    // case 3:
+    // sum += 3.00;
+    // break;
+    // case 4:
+    // sum += 2.70;
+    // break;
+    // case 5:
+    // sum += 2.30;
+    // break;
+    // case 6:
+    // sum += 2.00;
+    // break;
+    // case 7:
+    // sum += 1.70;
+    // break;
+    // case 8:
+    // sum += 1.00;
+    // break;
+    // case 9:
+    // break;
+    // }
+    // }
+    // System.out.println(sum);
+    // double gpa = sum / classnum;
     // return gpa;
     // }
 }
